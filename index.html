@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="hello">
+            <div class="avt">
+                <img width="250px" height="250px" src="./images/9.jpg" alt="">
+            </div>
+            <div class="text">
+            </div>
+            <div class="btn" onclick="changePage()">
+                <img width="40px" height="40px" src="./images/rose.png" alt="">
+            </div>
+        </div>
+        
+        
+    </div>
+
+        <script>
+        //text typing
+            const typed=new Typed(".text",{
+                strings:["","Hi, Thu...",
+                "Today is... 20/10", 
+                "It's your day!",
+                "Feel special, unique and beautiful",
+                "Happy Women Day!",
+                "Click cai bong ne :')"],
+                typeSpeed:100,
+                backSpeed:50,
+                loop:false
+            })
+        //
+
+
+
+        //change page
+        function changePage(){
+            const wrm=document.createElement('div')
+            wrm.setAttribute('class','wrapper-main')
+            wrm.innerHTML=`
+            <div class="box">
+                </div> 
+                <div class="title">
+                    HAPPY WOMEN'S DAY
+                </div>
+                <div class="container">
+                    <div class="bubbles">
+                    </div>
+                    <div class="btn" onclick="changeEnd()">
+                        <img width="50px" height="50px" src="./images/rose.png" alt="">
+                    </div>
+                </div>
+            `
+            const wr=document.getElementsByClassName('wrapper')[0]
+            document.body.removeChild(wr)
+            document.body.appendChild(wrm)
+
+            // image 3d rotate
+            box=document.getElementsByClassName('box')[0]
+            for (let i=1;i<9;i++){
+                const fl=document.createElement('span')
+                fl.setAttribute('style',`--i:${i}`)
+                fl.innerHTML=`<img width="250px" height="250px" src="./images/${i}.jpg"/>>`
+                box.appendChild(fl)
+            }
+            //
+
+            // flowers falling animation
+            const bb=document.getElementsByClassName('bubbles')[0]
+            for (let i=0;i<10;i++){
+                const fl=document.createElement('span')
+                fl.innerHTML=`<img class="flower" src="./images/ch.png" alt="">`
+                bb.appendChild(fl)
+            }
+            const list=document.getElementsByClassName('flower')
+            let a=0
+            Array.from(list).forEach((flo)=>{
+                a++
+                console.log(Math.floor(Math.random()))
+                flo.style.left=Math.floor(Math.random()*100) +a  + 'vw'
+                flo.style.top=Math.floor(Math.random()*100)-100 -a + 'vh'
+            })
+            //
+
+        }
+        //
+        
+
+        //end
+        function changeEnd(){
+            const wre=document.createElement('div')
+            wre.setAttribute('class','wrapper')
+
+            const be=document.createElement('div')
+            be.setAttribute('class','hello')
+
+            const link=document.createElement('a')
+            link.setAttribute('href',"https://www.facebook.com/messages/t/100015903046257")
+
+            const txt=document.createElement('div')
+            txt.setAttribute('class','text')
+            link.textContent="Trả lời ở đây nè"
+            be.appendChild(txt)
+            be.appendChild(link)
+            wre.appendChild(be)
+            
+            const wrm=document.getElementsByClassName('wrapper-main')[0]
+            document.body.removeChild(wrm)
+            document.body.appendChild(wre)
+            if(document.getElementsByClassName('text')) {
+            const endingd=new Typed(".text",{
+                strings:["","Cho mình hỏi ...",
+                        "Tuần sau rảnh bữa nào không bạn?"
+                        ],
+                typeSpeed:100,
+                backSpeed:50,
+                loop:false
+            })}
+        }
+
+
+
+    </script>
+</body>
+</html>
